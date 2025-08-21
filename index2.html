@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AmTech — Clone (HTML/CSS/JS)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- Reset & base ---------- */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;line-height:1.45;color:#222}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+    /* ---------- Topbar ---------- */
+    .topbar{background:#0f1724;color:#fff;font-size:13px}
+    .topbar .container{display:flex;justify-content:space-between;align-items:center;padding:8px 20px}
+    .topbar .left{display:flex;gap:18px;align-items:center}
+    .topbar a{color:#cbd5e1}
+
+    /* ---------- Header / Nav ---------- */
+    header{background:#fff;border-bottom:1px solid #e6edf3}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand .logo{width:46px;height:46px;background:linear-gradient(135deg,#0ea5a9,#3b82f6);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+    nav ul{display:flex;gap:18px;list-style:none}
+    .hero-cta{display:flex;gap:12px}
+    .btn{background:#0ea5a9;color:#fff;padding:10px 14px;border-radius:6px;font-weight:600}
+    .btn.secondary{background:transparent;border:1px solid #cbd5e1;color:#0f1724}
+
+    /* ---------- Hero slider ---------- */
+    .hero{position:relative;margin-top:12px}
+    .slides{position:relative;overflow:hidden;border-radius:10px}
+    .slide{min-height:300px;padding:48px 28px;display:flex;gap:30px;align-items:center;background:#f8fafc}
+    .slide h1{font-size:28px;margin-bottom:10px}
+    .slide p{max-width:650px;color:#475569}
+    .slide .hero-image{flex:1}
+    .slide .hero-content{flex:1}
+    .slider-controls{position:absolute;left:20px;right:20px;bottom:16px;display:flex;justify-content:space-between;pointer-events:none}
+    .dots{display:flex;gap:8px;pointer-events:auto}
+    .dot{width:10px;height:10px;border-radius:50%;background:#cbd5e1}
+    .dot.active{background:#0ea5a9}
+
+    /* ---------- Sections ---------- */
+    section{padding:44px 0}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:#fff;border-radius:10px;padding:20px;border:1px solid #e6edf3}
+    .services .card{display:flex;flex-direction:column;gap:12px}
+    .projects .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .testimonial{background:#0f1724;color:#fff;padding:28px;border-radius:10px}
+
+    /* ---------- Footer ---------- */
+    footer{background:#071127;color:#cbd5e1;padding:36px 0}
+    footer .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:18px}
+
+    /* ---------- Responsive ---------- */
+    @media (max-width:900px){
+      .grid{grid-template-columns:1fr}
+      .projects .cards{grid-template-columns:repeat(2,1fr)}
+      .slide{flex-direction:column}
+      nav ul{display:none}
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Top contact bar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="left">
+        <div>📞 +91 9985467378</div>
+        <div>✉️ <a href="mailto:info@amtechapps.com">info@amtechapps.com</a></div>
+      </div>
+      <div class="right">Mon - Fri 10:30 - 19:30</div>
+    </div>
+  </div>
+
+  <!-- Header / Nav -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">A</div>
+        <div>
+          <div style="font-weight:700">AmTech Solutions</div>
+          <div style="font-size:12px;color:#64748b">Web & Mobile Development</div>
+        </div>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="hero-cta">
+        <a class="btn" href="#contact">Get a Quote</a>
+        <a class="btn secondary" href="#projects">Our Projects</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Slider -->
+  <div class="container">
+    <div class="hero">
+      <div class="slides" id="slides">
+        <div class="slide" data-index="0">
+          <div class="hero-content">
+            <h1>Start Improving Your Business Today!</h1>
+            <p>We build beautiful, high-performance web and mobile applications that help your business grow. From design to deployment — we handle it all.</p>
+            <p style="margin-top:18px"><a class="btn" href="#contact">Talk to an Expert</a></p>
+          </div>
+          <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1000&auto=format&fit=crop&crop=faces" alt="hero">
+          </div>
+        </div>
+
+        <div class="slide" data-index="1" style="background:#f1f5f9">
+          <div class="hero-content">
+            <h1>Mobile App Development</h1>
+            <p>iOS, Android, cross-platform and HTML5 apps — we deliver native experiences with strong backend integrations.</p>
+          </div>
+          <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1000&auto=format&fit=crop&crop=faces" alt="apps">
+          </div>
+        </div>
+
+        <div class="slide" data-index="2" style="background:#eef2ff">
+          <div class="hero-content">
+            <h1>Enterprise Web Solutions</h1>
+            <p>Robust, secure and scalable web applications tailored to your business needs — built using modern stacks and best practices.</p>
+          </div>
+          <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1000&auto=format&fit=crop&crop=faces" alt="web">
+          </div>
+        </div>
+      </div>
+
+      <div class="slider-controls">
+        <div class="dots" id="dots"></div>
+        <div style="pointer-events:auto">
+          <button id="prev" class="btn secondary">Prev</button>
+          <button id="next" class="btn">Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <h2 style="margin-bottom:16px">About Us</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center">
+        <div>
+          <p>AmTech Solutions began when a group of passionate engineers decided to build something better. Over the years we've delivered 200+ projects across web and mobile for clients worldwide.</p>
+          <ul style="margin-top:12px;list-style:disc;padding-left:18px;color:#475569">
+            <li>Design & UX</li>
+            <li>Web & Mobile Development</li>
+            <li>QA, Maintenance & Support</li>
+          </ul>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop&crop=faces" alt="about image" style="border-radius:10px">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2 style="margin-bottom:18px">Our Services</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>UI / UX Design</h3>
+          <p>Create delightful experiences with user-first design and rapid prototyping.</p>
+        </div>
+        <div class="card">
+          <h3>Web Development</h3>
+          <p>Full-stack web development using modern frameworks and clean architecture.</p>
+        </div>
+        <div class="card">
+          <h3>Mobile Development</h3>
+          <p>iOS, Android, cross-platform apps with strong backend and analytics.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="projects">
+    <div class="container">
+      <h2 style="margin-bottom:18px">Our Projects</h2>
+      <div class="cards">
+        <!-- placeholders for project thumbnails -->
+        <div class="card"><img src="https://via.placeholder.com/400x220?text=Project+1" alt="p1"><p style="margin-top:8px;font-weight:600">www.amanpoints.com</p></div>
+        <div class="card"><img src="https://via.placeholder.com/400x220?text=Project+2" alt="p2"><p style="margin-top:8px;font-weight:600">aldarproperties.qa</p></div>
+        <div class="card"><img src="https://via.placeholder.com/400x220?text=Project+3" alt="p3"><p style="margin-top:8px;font-weight:600">chocolatewood.com.au</p></div>
+        <div class="card"><img src="https://via.placeholder.com/400x220?text=Project+4" alt="p4"><p style="margin-top:8px;font-weight:600">wonderbookofrecord.com</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section style="background:#f8fafc;padding-bottom:40px">
+    <div class="container">
+      <h2 style="margin-bottom:18px">Testimonials</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+        <div class="testimonial">
+          <p>"Working with AmTech exceeded our expectations. The team did an amazing job incorporating our feedback."</p>
+          <p style="margin-top:12px;font-weight:700">— Shahraban Abdullah, Qatar</p>
+        </div>
+        <div class="testimonial">
+          <p>"The team was proactive and the final product delivered had great quality."</p>
+          <p style="margin-top:12px;font-weight:700">— Chris Jones, Australia</p>
+        </div>
+        <div class="testimonial">
+          <p>"The proposal and pricing were very competitive; highly recommended."</p>
+          <p style="margin-top:12px;font-weight:700">— William, USA</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Footer -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 style="color:#fff;margin-bottom:8px">AmTech Solutions</h3>
+          <p style="color:#fff;max-width:520px">Flat no : 301, 3rd Floor City Tower, Nalgonda X-Road Malakpet , Hyderabad (T.S)- 500036 , India.</p>
+          <p style="margin-top:8px">📞 +91 9985467378 | ✉️ info@amtechapps.com</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul style="list-style:none;padding-left:0;margin-top:8px;color:#cbd5e1">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Newsletter</h4>
+          <p style="margin-top:8px;color:#cbd5e1">Subscribe to receive updates about new projects.</p>
+          <form onsubmit="event.preventDefault();alert('Subscribed!')" style="margin-top:8px;display:flex;gap:8px">
+            <input placeholder="Email" required style="padding:8px;border-radius:6px;border:1px solid #cbd5e1;flex:1">
+            <button class="btn" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:20px;color:#94a3b8">© AmTech 2019 - All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple slider logic
+    (function(){
+      const slidesEl = document.getElementById('slides');
+      const slides = Array.from(slidesEl.children);
+      const dotsEl = document.getElementById('dots');
+      let idx = 0;
+
+      function buildDots(){
+        slides.forEach((s,i)=>{
+          const d = document.createElement('div');
+          d.className='dot'+(i===0?' active':'');
+          d.addEventListener('click',()=>goTo(i));
+          dotsEl.appendChild(d);
+        })
+      }
+
+      function update(){
+        slides.forEach((s,i)=>{
+          s.style.display = (i===idx)?'flex':'none';
+        })
+        Array.from(dotsEl.children).forEach((d,i)=>d.classList.toggle('active',i===idx));
+      }
+
+      function next(){ idx = (idx+1) % slides.length; update(); }
+      function prev(){ idx = (idx-1+slides.length) % slides.length; update(); }
+      function goTo(i){ idx=i; update(); }
+
+      document.getElementById('next').addEventListener('click',next);
+      document.getElementById('prev').addEventListener('click',prev);
+
+      buildDots(); update();
+      // autoplay
+      setInterval(next,6000);
+    })();
+  </script>
+</body>
+</html>
